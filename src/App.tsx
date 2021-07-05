@@ -1,9 +1,13 @@
 import React from 'react';
+
+import { QueryClient, QueryClientProvider } from 'react-query'
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const queryClient = new QueryClient()
   return (
+      <QueryClientProvider client={queryClient}>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -20,6 +24,7 @@ function App() {
         </a>
       </header>
     </div>
+      </QueryClientProvider>
   );
 }
 
