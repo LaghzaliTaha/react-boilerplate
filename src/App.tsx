@@ -1,27 +1,21 @@
-import React from 'react';
-
+import React,{useState} from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query'
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/NavBar'
+import People from "./components/People";
+import Planet from "./components/Planet";
 
 function App() {
+  const [page,setPage] = useState('Planets')
   const queryClient = new QueryClient()
   return (
       <QueryClientProvider client={queryClient}>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <NavBar setPage={setPage}/>
+        <div className="content">
+          {page==='Planets' ? <Planet />:<People /> }
+        </div>
       </header>
     </div>
       </QueryClientProvider>
