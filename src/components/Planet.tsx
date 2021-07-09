@@ -6,10 +6,12 @@ const fetchPlanets = async () => {
 }
 
 const Planet = () => {
-    const {data,status} = useQuery('planets',fetchPlanets)
-    console.log(data)
+    const {data, status} = useQuery('planets', fetchPlanets)
     console.log(status)
-
-    return(<div> Planets</div>);}
+    return (
+        <div> Planets
+            {status === 'success' && data.results.map((planet: any) => (<div>{planet.name}</div>))}
+        </div>)
+}
 
 export default Planet;
